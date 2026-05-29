@@ -1,5 +1,6 @@
 set(OnnxRuntime_Version "1.17.1" CACHE STRING "OnnxRuntime version" FORCE)
-set(OnnxRuntime_DIR ${THIRD_PARTY_PATH}/onnxruntime)
+# set(OnnxRuntime_DIR ${THIRD_PARTY_PATH}/onnxruntime)
+set(OnnxRuntime_DIR /opt/onnxruntime_gpu)
 # download from github if OnnxRuntime library is not exists
 if (NOT EXISTS ${OnnxRuntime_DIR})
     set(OnnxRuntime_Filename "onnxruntime-linux-x64-${OnnxRuntime_Version}.tgz")
