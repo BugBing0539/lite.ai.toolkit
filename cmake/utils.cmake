@@ -43,7 +43,7 @@ function(add_lite_ai_toolkit_shared_library version soversion)
     set(LITE_DEPENDENCIES ${OpenCV_LIBS})
 
     if (ENABLE_ONNXRUNTIME)
-        include(cmake/onnxruntime.cmake)
+        # include(cmake/onnxruntime.cmake)
         set(LITE_SRCS ${LITE_SRCS} ${ORT_SRCS})
         set(LITE_DEPENDENCIES ${LITE_DEPENDENCIES} onnxruntime ddim_scheduler_cpp)
         link_directories(${CMAKE_SOURCE_DIR}/lite/bin)
