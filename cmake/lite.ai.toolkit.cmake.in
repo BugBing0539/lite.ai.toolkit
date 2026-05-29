@@ -30,19 +30,19 @@ include_directories(${LITE_AI_INCLUDE_DIR})
 link_directories(${LITE_AI_LIB_DIR})
 
 # opencv
-include_directories(${THIRD_PARTY_PATH}/opencv/include/opencv4)
-link_directories(${THIRD_PARTY_PATH}/opencv/lib)
-list(APPEND Lite_AI_INCLUDE_DIRS ${THIRD_PARTY_PATH}/opencv/include/opencv4)
-list(APPEND Lite_AI_LIBS_DIRS ${THIRD_PARTY_PATH}/opencv/lib)
+include_directories(${OpenCV_INCLUDE_DIRS})
+link_directories(${OpenCV_LIB_DIR})
+list(APPEND Lite_AI_INCLUDE_DIRS ${OpenCV_INCLUDE_DIRS})
+list(APPEND Lite_AI_LIBS_DIRS ${OpenCV_LIB_DIR})
 set(OpenCV_LIBS opencv_core opencv_imgcodecs opencv_imgproc opencv_video opencv_videoio) # linux only
 list(APPEND Lite_AI_LIBS ${OpenCV_LIBS})
 
 # onnxruntime
 if (ENABLE_ONNXRUNTIME)
-  include_directories(${THIRD_PARTY_PATH}/onnxruntime/include)
-  link_directories(${THIRD_PARTY_PATH}/onnxruntime/lib)
-  list(APPEND Lite_AI_INCLUDE_DIRS ${THIRD_PARTY_PATH}/onnxruntime/include)
-  list(APPEND Lite_AI_LIBS_DIRS ${THIRD_PARTY_PATH}/onnxruntime/lib)
+  include_directories(${ONNXRUNTIME_ROOT}/include)
+  link_directories(${ONNXRUNTIME_ROOT}/lib)
+  list(APPEND Lite_AI_INCLUDE_DIRS ${ONNXRUNTIME_ROOT}/include)
+  list(APPEND Lite_AI_LIBS_DIRS ${ONNXRUNTIME_ROOT}/lib)
   list(APPEND Lite_AI_LIBS onnxruntime)
 endif()
 
