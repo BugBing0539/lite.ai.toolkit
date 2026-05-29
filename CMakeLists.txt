@@ -21,7 +21,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif ()
 # 指定CUDA编译器
 set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
-set(CMAKE_CUDA_ARCHITECTURES 89) # For RTX 20xx series
+# set(CMAKE_CUDA_ARCHITECTURES 89) # For RTX 20xx series
 
 # 启用 CUDA
 enable_language(CUDA)
@@ -51,7 +51,14 @@ endif()
 include_directories(${LITE_AI_ROOT_DIR})
 configure_file(cmake/lite.ai.toolkit.cmake.in ${CMAKE_SOURCE_DIR}/cmake/lite.ai.toolkit.cmake @ONLY)
 
-include(cmake/opencv.cmake)
+#include(cmake/opencv.cmake)
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+link_directories(${OpenCV_LIB_DIR})
+
+set(ONNXRUNTIME_ROOT /opt/onnxruntime_gpu)
+include_directories(${ONNXRUNTIME_ROOT}/include)
+link_directories(${ONNXRUNTIME_ROOT}/lib)
 
 add_lite_ai_toolkit_shared_library(${VERSION_STRING} ${SOVERSION_STRING})
 install(TARGETS lite.ai.toolkit LIBRARY DESTINATION lib)
