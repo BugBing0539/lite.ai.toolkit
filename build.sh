@@ -21,7 +21,7 @@ if [ $1 == "tensorrt" ]; then
 else
   cmake .. -DCMAKE_BUILD_TYPE=Release \
            -DCMAKE_INSTALL_PREFIX=./install \
-           -DENABLE_TEST=OFF
+           -DENABLE_TEST=OFF \
            -DLITEAI_BUILD_WITH_SYSTEM_OPENCV=ON
 fi
 
