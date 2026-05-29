@@ -10,20 +10,24 @@ else
 fi
 
 cd "${BUILD_DIR}" && pwd 
-if [ $1 == "tensorrt" ]; then
-  cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel \
-           -DCMAKE_INSTALL_PREFIX=./install \
-           -DENABLE_TENSORRT=ON \
-           -DCUDA_DIR=/usr/local/cuda \
-           -DTensorRT_DIR=/usr/local/tensorrt \
-           -DENABLE_TEST=OFF
-
-else
-  cmake .. -DCMAKE_BUILD_TYPE=Release \
+cmake .. -DCMAKE_BUILD_TYPE=Release \
            -DCMAKE_INSTALL_PREFIX=./install \
            -DENABLE_TEST=OFF \
            -DLITEAI_BUILD_WITH_SYSTEM_OPENCV=ON
-fi
+# if [ $1 == "tensorrt" ]; then
+#   cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel \
+#            -DCMAKE_INSTALL_PREFIX=./install \
+#            -DENABLE_TENSORRT=ON \
+#            -DCUDA_DIR=/usr/local/cuda \
+#            -DTensorRT_DIR=/usr/local/tensorrt \
+#            -DENABLE_TEST=OFF
+
+# else
+#   cmake .. -DCMAKE_BUILD_TYPE=Release \
+#            -DCMAKE_INSTALL_PREFIX=./install \
+#            -DENABLE_TEST=OFF \
+#            -DLITEAI_BUILD_WITH_SYSTEM_OPENCV=ON
+# fi
 
 make -j8
 make install
