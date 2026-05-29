@@ -16,12 +16,12 @@ if [ $1 == "tensorrt" ]; then
            -DENABLE_TENSORRT=ON \
            -DCUDA_DIR=/usr/local/cuda \
            -DTensorRT_DIR=/usr/local/tensorrt \
-           -DENABLE_TEST=ON
+           -DENABLE_TEST=OFF
 
 else
   cmake .. -DCMAKE_BUILD_TYPE=MinSizeRel \
            -DCMAKE_INSTALL_PREFIX=./install \
-           -DENABLE_TEST=ON
+           -DENABLE_TEST=OFF
 fi
 
 make -j8
